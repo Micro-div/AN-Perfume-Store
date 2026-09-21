@@ -24,12 +24,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(to left,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      transparent 100%);
   z-index: 1;
 }
 
@@ -41,6 +39,7 @@
   z-index: 2;
   text-align: right;
   max-width: 420px;
+  width: 90%;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -51,7 +50,7 @@
 }
 
 .eyebrow {
-  font-size: 11px;
+  font-size: clamp(9px, 1.2vw, 11px);
   letter-spacing: 5px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
@@ -62,7 +61,7 @@
 }
 
 .headline {
-  font-size: clamp(32px, 4.5vw, 56px);
+  font-size: clamp(28px, 4.5vw, 56px);
   line-height: 1.2;
   color: #fff;
   margin-bottom: 14px;
@@ -88,10 +87,21 @@
   color: var(--gold-light);
 }
 
-.word:nth-child(1) .inner { animation-delay: 0.1s; }
-.word:nth-child(2) .inner { animation-delay: 0.3s; }
-.word:nth-child(3) .inner { animation-delay: 0.5s; }
-.word:nth-child(4) .inner { animation-delay: 0.7s; }
+.word:nth-child(1) .inner {
+  animation-delay: 0.1s;
+}
+
+.word:nth-child(2) .inner {
+  animation-delay: 0.3s;
+}
+
+.word:nth-child(3) .inner {
+  animation-delay: 0.5s;
+}
+
+.word:nth-child(4) .inner {
+  animation-delay: 0.7s;
+}
 
 @keyframes slideUp {
   to {
@@ -101,7 +111,7 @@
 }
 
 .sub {
-  font-size: 15px;
+  font-size: clamp(13px, 1.5vw, 15px);
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 32px;
   opacity: 0;
@@ -121,6 +131,7 @@
   opacity: 0;
   animation: fadeIn 0.6s ease 1.2s forwards;
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .cta:hover {
@@ -129,7 +140,9 @@
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .dots {
@@ -183,43 +196,39 @@
 }
 
 @keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.t1 {
-  font-size: 22px;
+.t1,
+.t2,
+.t3,
+.t4 {
+  font-size: clamp(14px, 2.2vw, 22px);
   font-style: italic;
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
+}
+
+.t1 {
   color: #fff;
 }
 
 .t2 {
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
   color: var(--gold-light);
 }
 
 .t3 {
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
   color: rgba(232, 203, 140, 0.85);
 }
 
 .t4 {
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -229,12 +238,21 @@
   opacity: 0.8;
 }
 
+/* Tablets and small laptops */
+@media (max-width: 1024px) {
+  .overlay {
+    max-width: 360px;
+  }
+}
+
+/* Standard mobile */
 @media (max-width: 768px) {
   .overlay {
     right: 50%;
     transform: translate(50%, -50%);
     text-align: center;
     width: 90%;
+    max-width: none;
   }
 
   .overlay.hidden {
@@ -249,11 +267,94 @@
     bottom: 80px;
   }
 
-  .t1, .t2, .t3, .t4 {
-    font-size: 18px;
+  .ticker {
+    padding: 12px 0;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .hero {
+    height: 100svh;
+    /* better mobile viewport height, avoids browser UI jump */
+  }
+
+  .overlay {
+    width: 95%;
+  }
+
+  .headline {
+    margin-bottom: 10px;
+  }
+
+  .sub {
+    margin-bottom: 22px;
+  }
+
+  .cta {
+    padding: 12px 28px;
+    font-size: 11px;
+  }
+
+  .dots {
+    bottom: 70px;
+  }
+
+  .tickerTrack {
+    gap: 20px;
+  }
+}
+
+/* Very small / older phones */
+@media (max-width: 360px) {
+  .eyebrow {
+    letter-spacing: 3px;
+  }
+
+  .headline {
+    font-size: 24px;
+  }
+
+  .cta {
+    padding: 10px 24px;
+  }
+}
+
+/* Landscape phones (short height) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    height: 100vh;
+  }
+
+  .overlay {
+    top: 45%;
+  }
+
+  .dots {
+    bottom: 50px;
   }
 
   .ticker {
-    padding: 12px 0;
+    padding: 8px 0;
+  }
+
+  .t1,
+  .t2,
+  .t3,
+  .t4 {
+    font-size: 14px;
+  }
+}
+
+/* Fix hero image fit under 720px — shorter box, image not cropped awkwardly */
+@media (max-width: 720px) {
+  .hero {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .slide {
+    object-fit: cover;
+    object-position: top center;
   }
 }
