@@ -1,0 +1,86 @@
+:root {
+  /* ---- Color tokens ---- */
+  --cream: #F7F1E4;
+  --ivory: #FFFDF8;
+  --gold-deep: #A5792E;
+  --gold-light: #E8CB8C;
+  --gold-mid: #C89B4D;
+  --espresso: #3A2E1F;
+  --espresso-soft: #6B5A42;
+  --charcoal: #1F1A12;
+  --line: rgba(165, 121, 46, 0.25);
+
+  /* ---- Type tokens ---- */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Poppins', -apple-system, sans-serif;
+
+  --gold-gradient: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--espresso);
+  font-weight: 600;
+}
+
+p { margin: 0; line-height: 1.7; color: var(--espresso-soft); }
+
+a { text-decoration: none; color: inherit; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+}
+
+img { max-width: 100%; display: block; }
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 96px 24px;
+}
+
+.eyebrow-gold {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 17px;
+  letter-spacing: 0.3px;
+}
+
+.gold-divider {
+  width: 64px;
+  height: 1px;
+  background: var(--gold-deep);
+  margin: 18px auto;
+  position: relative;
+}
+
+.gold-divider::before {
+  content: '✦';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold-deep);
+  background: var(--cream);
+  padding: 0 8px;
+  font-size: 11px;
+}
+
+@media (max-width: 640px) {
+  .section { padding: 64px 20px; }
+}
