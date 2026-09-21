@@ -12,6 +12,7 @@
 .inner {
   max-width: 1180px;
   margin: 0 auto;
+  width: 100%;
   padding: 12px 24px;
   display: flex;
   align-items: center;
@@ -28,6 +29,7 @@
 .logoImage {
   height: 100%;
   max-height: 70px;
+  max-width: 160px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -53,6 +55,7 @@
 .nav {
   display: flex;
   gap: 36px;
+  align-items: center;
 }
 
 .navLink {
@@ -86,6 +89,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .iconBtn {
@@ -93,6 +97,7 @@
   font-size: 17px;
   color: var(--espresso);
   padding: 6px;
+  line-height: 1;
 }
 
 .menuToggle {
@@ -100,9 +105,21 @@
   background: none;
   font-size: 20px;
   color: var(--espresso);
+  padding: 6px;
+  line-height: 1;
 }
 
 @media (max-width: 820px) {
+  .inner {
+    height: 64px;
+    padding: 10px 20px;
+  }
+
+  .logoImage {
+    max-height: 52px;
+    max-width: 135px;
+  }
+
   .nav {
     position: absolute;
     top: 100%;
@@ -114,13 +131,57 @@
     gap: 18px;
     /* border-bottom: 1px solid var(--line); */
     display: none;
+    box-shadow: 0 10px 20px rgba(58, 46, 31, 0.08);
   }
 
   .navOpen {
     display: flex;
   }
 
+  .navLink {
+    width: 100%;
+    padding: 4px 0;
+  }
+
   .menuToggle {
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding: 9px 14px;
+  }
+
+  .logoImage {
+    max-width: 115px;
+  }
+
+  .actions {
+    gap: 4px;
+  }
+
+  .iconBtn,
+  .menuToggle {
+    padding: 6px 5px;
+  }
+
+  .nav {
+    padding: 16px 20px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 340px) {
+  .logoImage {
+    max-width: 96px;
+  }
+
+  .iconBtn {
+    font-size: 16px;
+  }
+
+  .menuToggle {
+    font-size: 18px;
   }
 }
